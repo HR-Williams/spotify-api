@@ -16,6 +16,8 @@ const App = () => {
   ];
 
   const[token, setToken] = useState('');
+  const [genres, setGenres] = useState({selectGenere: '', listOfGenresFromAPI: []});
+  const [playlist, setPlaylist] = useState({selectedPlaylist: '', listOfPlaylistFromAPI: []});
 
   useEffect(() => {
 
@@ -30,16 +32,32 @@ const App = () => {
     .then(tokenResponse => {      
       console.log(tokenResponse.data.access_token);
       setToken(tokenResponse.data.access_token);
+
+      axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token}
+      })
+      .then (genreResponse => {
+        setGenres({
+          selectGenre: genres.selectedGenre,
+          listOfGenresFromAPI: genreResponse.data.categories.items
+        })
+      });
     });
 
-  }, []);
+  }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret]);
 
-  
+const genreChanged = val => {
+  setGenres({
+    selectedGenre: val,
+    listOfGenresFromAPI: genres.listOfGenresFromAPI
+  });
+}  
 
   return (
     <form onSubmit={() => { }}>
       <div className="container">
-        <Dropdown options={data} />
+        <Dropdown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={() => {}} />
         <Dropdown options={data} />
         <button type='submit'>
           Search
