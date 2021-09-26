@@ -3,9 +3,14 @@ import Dropdown from './Dropdown';
 
 const App = () => {
   
+  const data = [
+    {value: 1, name: "A"},
+    {value: 2, name: "B"},
+    {value: 3, name: "C"},
+  ]
   return(
     <div>
-      <Dropdown />
+      <Dropdown options={data}/>
     </div>
   );
 }
