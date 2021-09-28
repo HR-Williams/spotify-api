@@ -15,8 +15,8 @@ const App = () => {
     { value: 3, name: "C" },
   ];
 
-  const[token, setToken] = useState('');
-  const [genres, setGenres] = useState({selectGenere: '', listOfGenresFromAPI: []});
+  const [token, setToken] = useState('');  
+  const [genres, setGenres] = useState({selectedGenre: '', listOfGenresFromAPI: []});
   const [playlist, setPlaylist] = useState({selectedPlaylist: '', listOfPlaylistFromAPI: []});
 
   useEffect(() => {
@@ -30,35 +30,56 @@ const App = () => {
       method: 'POST'
     })
     .then(tokenResponse => {      
-      console.log(tokenResponse.data.access_token);
       setToken(tokenResponse.data.access_token);
 
       axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token}
       })
-      .then (genreResponse => {
+      .then (genreResponse => {        
         setGenres({
-          selectGenre: genres.selectedGenre,
+          selectedGenre: genres.selectedGenre,
           listOfGenresFromAPI: genreResponse.data.categories.items
         })
       });
+      
     });
 
-  }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret]);
+  }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret]); 
 
-const genreChanged = val => {
-  setGenres({
-    selectedGenre: val,
-    listOfGenresFromAPI: genres.listOfGenresFromAPI
-  });
-}  
+  const genreChanged = val => {
+    setGenres({
+      selectedGenre: val, 
+      listOfGenresFromAPI: genres.listOfGenresFromAPI
+    });
+
+    axios(`https://api.spotify.com/v1/browse/categories/${val}/playlists?limit=10`, {
+      method: 'GET',
+      headers: { 'Authorization' : 'Bearer ' + token}
+    })
+    .then(playlistResponse => {
+      setPlaylist({
+        selectedPlaylist: playlist.selectedPlaylist,
+        listOfPlaylistFromAPI: playlistResponse.data.playlists.items
+      })
+    });
+
+    console.log(val);
+  }
+
+  const playlistChanged = val => {
+    console.log(val);
+    setPlaylist({
+      selectedPlaylist: val,
+      listOfPlaylistFromAPI: playlist.listOfPlaylistFromAPI
+    });
+  }
 
   return (
     <form onSubmit={() => { }}>
       <div className="container">
-        <Dropdown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={() => {}} />
-        <Dropdown options={data} />
+        <Dropdown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={genreChanged} />
+        <Dropdown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} />
         <button type='submit'>
           Search
         </button>
