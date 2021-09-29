@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from './Dropdown';
 import Listbox from "./Listbox";
+import Detail from './Details'
 import { Credentials } from './Credentials';
 import axios from "axios";
 
@@ -67,11 +68,11 @@ const App = () => {
       })
     });
 
-    console.log(val);
+    console.log(val + " selected Genre");
   }
 
   const playlistChanged = val => {
-    console.log(val);
+    console.log(val + " playlist");
     setPlaylist({
       selectedPlaylist: val,
       listOfPlaylistFromAPI: playlist.listOfPlaylistFromAPI
@@ -103,7 +104,7 @@ const App = () => {
 
     setTrackDetail(trackInfo[0].track);
 
-
+console.log(val + " trackid")
 
   }
 
@@ -116,6 +117,7 @@ const App = () => {
           Search
         </button>
         <Listbox items={tracks.listOfTracksFromAPI} clicked={listboxClicked} />
+        {trackDetail && <Detail {...trackDetail} />}
       </div>
     </form>
   );
