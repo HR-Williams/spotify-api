@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Dropdown from './Dropdown';
 import Listbox from "./Listbox";
 import Detail from './Details'
+import Charts from './Charts'
 import { Credentials } from './Credentials';
 import axios from "axios";
 
@@ -146,6 +147,8 @@ console.log(features.acousticness + " acousticness")
         </button>
         <Listbox items={tracks.listOfTracksFromAPI} clicked={listboxClicked} />
         {trackDetail && <Detail {...trackDetail} />}
+        <Charts {...features} />      
+        {/* <Charts acousticness={features.acousticness}  danceability={features.dancebility} energy={features.energy} instrumentalness={features.energy} liveness={} '', speechiness: '', valence: ''}> */}
       </div>
     </form>
   );
