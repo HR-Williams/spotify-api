@@ -12,11 +12,11 @@ const App = () => {
 
   console.log('RENDERING APP.JS');
 
-  const data = [
-    { value: 1, name: "A" },
-    { value: 2, name: "B" },
-    { value: 3, name: "C" },
-  ];
+  // const data = [
+  //   { value: 1, name: "A" },
+  //   { value: 2, name: "B" },
+  //   { value: 3, name: "C" },
+  // ];
 
   const [token, setToken] = useState('');  
   const [genres, setGenres] = useState({selectedGenre: '', listOfGenresFromAPI: []});
@@ -147,7 +147,8 @@ console.log(features.acousticness + " acousticness")
         </button>
         <Listbox items={tracks.listOfTracksFromAPI} clicked={listboxClicked} />
         {trackDetail && <Detail {...trackDetail} />}
-        <Charts {...features} />      
+        <Charts {...features} clicked={listboxClicked}/>      
+
         {/* <Charts acousticness={features.acousticness}  danceability={features.dancebility} energy={features.energy} instrumentalness={features.energy} liveness={} '', speechiness: '', valence: ''}> */}
       </div>
     </form>
