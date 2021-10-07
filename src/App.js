@@ -43,13 +43,15 @@ const App = () => {
       .then (genreResponse => {        
         setGenres({
           selectedGenre: genres.selectedGenre,
-          listOfGenresFromAPI: genreResponse.data.categories.items
+          listOfGenresFromAPI: genreResponse.data.categories.items,
+          
         })
+        console.log(genreResponse.data)
       });
       
     });
 
-  }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret]); 
+  }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret]); //this array tells useEffect when to fire
 
   const genreChanged = val => {
     setGenres({
@@ -62,10 +64,12 @@ const App = () => {
       headers: { 'Authorization' : 'Bearer ' + token}
     })
     .then(playlistResponse => {
+      
       setPlaylist({
         selectedPlaylist: playlist.selectedPlaylist,
         listOfPlaylistFromAPI: playlistResponse.data.playlists.items
       })
+      console.log(playlistResponse.data)
     });
 
     console.log(val + " selected Genre");
@@ -112,6 +116,7 @@ console.log(val + " trackid")
     <form onSubmit={buttonClicked}>
       <div className="container">
         <Dropdown options={genres.listOfGenresFromAPI} selectedValue={genres.selectedGenre} changed={genreChanged} />
+        {/* code on line 114 creates options as a prop of Dropdown and options and it's data gets passed to Dropdown component with props */}
         <Dropdown options={playlist.listOfPlaylistFromAPI} selectedValue={playlist.selectedPlaylist} changed={playlistChanged} />
         <button type='submit'>
           Search
