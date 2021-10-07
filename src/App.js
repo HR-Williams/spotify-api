@@ -10,8 +10,6 @@ const App = () => {
 
   const spotify = Credentials();
 
-  console.log('RENDERING APP.JS');
-
   // const data = [
   //   { value: 1, name: "A" },
   //   { value: 2, name: "B" },
@@ -147,9 +145,8 @@ console.log(features.acousticness + " acousticness")
         </button>
         <Listbox items={tracks.listOfTracksFromAPI} clicked={listboxClicked} />
         {trackDetail && <Detail {...trackDetail} />}
-        <Charts {...features} clicked={listboxClicked}/>      
-
-        {/* <Charts acousticness={features.acousticness}  danceability={features.dancebility} energy={features.energy} instrumentalness={features.energy} liveness={} '', speechiness: '', valence: ''}> */}
+        {/* <Charts {...features} acousticness={features.acousticness} danceability={features.danceability} energy={features.energy} instrumentalness={features.instrumentalness} liveness={features.liveness} speechiness={features.speechiness} valence={features.valence} />       */}
+        {trackDetail && <Charts {...features} />}
       </div>
     </form>
   );
