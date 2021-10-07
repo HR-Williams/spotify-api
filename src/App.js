@@ -118,7 +118,7 @@ const App = () => {
     .then(featuresResponse =>{
       setFeatures({
         acousticness: featuresResponse.data.acousticness,
-        dancebility: featuresResponse.data.dancebility,
+        danceability: featuresResponse.data.danceability,
         energy: featuresResponse.data.energy,
         instrumentalness: featuresResponse.data.instrumentalness,
         liveness: featuresResponse.data.liveness,

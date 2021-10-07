@@ -28,8 +28,6 @@ const Charts = props => {
   return (
 
     <>
-      <div className='header'>
-      </div>
       <Radar data={data} options={options} />
     </>
 
