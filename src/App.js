@@ -97,6 +97,7 @@ const App = () => {
         selectedTrack: tracks.selectedTrack,
         listOfTracksFromAPI: tracksResponse.data.items
       })
+      console.log(tracksResponse.data)
     });
   }
 
@@ -131,6 +132,7 @@ const App = () => {
 console.log(val + " trackid")
 console.log(features.acousticness + " acousticness")
 // console.log(featuresResponse + " features")
+
 
   }
 

@@ -6,7 +6,7 @@ const Listbox = props => {
     e.preventDefault();
     props.clicked(e.target.id);
   }
-
+ 
   return (
 
     <div>
@@ -15,7 +15,7 @@ const Listbox = props => {
         <button key={idx}
           onClick={clicked}
           id={item.track.id}>
-              {item.track.name}
+              {item.track.artists[0].name} - {item.track.name}
           </button>)
       }
     </div>
