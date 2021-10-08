@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from './Dropdown';
 import Listbox from "./Listbox";
-import Detail from './Details'
-import Charts from './Charts'
+import Detail from './Details';
+import Charts from './Charts';
+import Stream from './Stream';
 import { Credentials } from './Credentials';
 import axios from "axios";
 
@@ -20,6 +21,7 @@ const App = () => {
   const [genres, setGenres] = useState({selectedGenre: '', listOfGenresFromAPI: []});
   const [playlist, setPlaylist] = useState({selectedPlaylist: '', listOfPlaylistFromAPI: []});
   const [tracks, setTracks] = useState({selectedTrack: '', listOfTracksFromAPI: []});
+  const [trackID, setTrackID] = useState('');
   const [trackDetail, setTrackDetail] = useState(null);
   const [features, setFeatures] = useState({acousticness: '', danceability: '', energy: '', instrumentalness: '', liveness: '', speechiness: '', valence: ''});
   
@@ -106,9 +108,9 @@ const App = () => {
     const currentTracks = [...tracks.listOfTracksFromAPI];
 
     const trackInfo = currentTracks.filter(t => t.track.id === val);
-
     setTrackDetail(trackInfo[0].track);
-    console.log(val + " val")
+    console.log(val + " t.track.id val");
+    setTrackID(val);
 
     axios(`https://api.spotify.com/v1/audio-features/${val}`, {
       method: 'GET',
@@ -149,6 +151,7 @@ console.log(features.acousticness + " acousticness")
         {trackDetail && <Detail {...trackDetail} />}
         {/* <Charts {...features} acousticness={features.acousticness} danceability={features.danceability} energy={features.energy} instrumentalness={features.instrumentalness} liveness={features.liveness} speechiness={features.speechiness} valence={features.valence} />       */}
         {trackDetail && <Charts {...features} />}
+         {trackDetail && <Stream hi={trackID} />}
       </div>
     </form>
   );
