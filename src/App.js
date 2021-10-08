@@ -151,7 +151,7 @@ console.log(features.acousticness + " acousticness")
         {trackDetail && <Detail {...trackDetail} />}
         {/* <Charts {...features} acousticness={features.acousticness} danceability={features.danceability} energy={features.energy} instrumentalness={features.instrumentalness} liveness={features.liveness} speechiness={features.speechiness} valence={features.valence} />       */}
         {trackDetail && <Charts {...features} />}
-         {trackDetail && <Stream hi={trackID} />}
+         {trackDetail && <Stream streamID={trackID} />}
       </div>
     </form>
   );
