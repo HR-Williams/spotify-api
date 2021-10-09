@@ -148,10 +148,11 @@ console.log(features.acousticness + " acousticness")
           Search
         </button>
         <Listbox items={tracks.listOfTracksFromAPI} clicked={listboxClicked} />
-        {trackDetail && <Detail {...trackDetail} />}
+        {/* {trackDetail && <Detail {...trackDetail} />} */}
         {/* <Charts {...features} acousticness={features.acousticness} danceability={features.danceability} energy={features.energy} instrumentalness={features.instrumentalness} liveness={features.liveness} speechiness={features.speechiness} valence={features.valence} />       */}
+        {trackDetail && <Stream streamID={trackID} />}
         {trackDetail && <Charts {...features} />}
-         {trackDetail && <Stream streamID={trackID} />}
+        
       </div>
     </form>
   );

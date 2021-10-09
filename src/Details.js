@@ -4,7 +4,7 @@ const Detail = ({ album, artists, name }) => {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <img
           src={album.images[0].url}
           alt={name}>
@@ -19,7 +19,7 @@ const Detail = ({ album, artists, name }) => {
         <label htmlFor={artists[0].name}>
           {artists[0].name}
         </label>
-      </div>
+      </div> */}
     </div>
   );
 }

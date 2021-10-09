@@ -6,7 +6,7 @@ const newsrc = "https://open.spotify.com/embed/track/"  + val
 
 return(
 <div>
-<iframe src={newsrc} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<iframe src={newsrc} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
 <p>trackid= {props.streamID} </p>
 <p>newsrc={newsrc}</p>
