@@ -29,7 +29,7 @@ This is a capstone project for Epicodus. This app allows users to search for son
 * * You will need to obtain a Client ID and Client Secret from Spotify by registering an App [here](https://developer.spotify.com/dashboard/applications)
 * In the `src` directory create a file called `Credentials.js`
 * In `Credentials.js` enter this code:
-`const Credentials = () => {
+``const Credentials = () => {
 
   return {
       ClientId: 'YOURIDHERE',
@@ -37,7 +37,7 @@ This is a capstone project for Epicodus. This app allows users to search for son
   }
 }
 
-export { Credentials };
+export { Credentials };``
 * `npm start` Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
