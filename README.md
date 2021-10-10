@@ -17,7 +17,7 @@
 
 ## Description
 
-This is a capstone project for Epicodus to. This app allows users to search for songs and view a radar chart of the songs audio attributes. User can add choose different genres and playlists. User can then choose a song. A radar chart will populate with the song's audio attributes and the song can be streamed from spotify.
+This is a capstone project for Epicodus. This app allows users to search for songs and view a radar chart of the songs audio attributes. User can add choose different genres and playlists. User can then choose a song. A radar chart will populate with the song's audio attributes and the song can be streamed from spotify.
 
 ## Setup/Installation Requirements
 
