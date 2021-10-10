@@ -26,6 +26,18 @@ This is a capstone project for Epicodus. This app allows users to search for son
 * Clone this project with the following git command `$ git clone https://github.com/HR-Williams/spotify-api`
 * Navigate to the top level of the repository
 * Recreate project environment and install required dependencies with terminal command `$ npm install`
+* * You will need to obtain a Client ID and Client Secret from Spotify by registering an App [here](https://developer.spotify.com/dashboard/applications)
+* In the `src` directory create a file called `Credentials.js`
+* In `Credentials.js` enter this code:
+`const Credentials = () => {
+
+  return {
+      ClientId: 'YOURIDHERE',
+      ClientSecret: 'YOURSECRETHERE'
+  }
+}
+
+export { Credentials };
 * `npm start` Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
